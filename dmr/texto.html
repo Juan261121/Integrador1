@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja de Roupas</title>
+    <link rel="stylesheet" href="sty.css">
+    <script src="fun.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Estilo Master</h1>
+        <div class="carrinho-info">
+            Carrinho (<span id="contador-carrinho">0</span>)
+        </div>
+    </header>
+
+    <main>
+        <h2>Produtos em Destaque</h2>
+        <section class="produtos">
+            <div class="produto" data-id="1" data-nome="Camiseta Básica" data-preco="49.90">
+                <img src="img/camisa basica.webp" alt="Camiseta Básica">
+                <h3>Camiseta Básica</h3>
+                <p>Preço: R$ 49.90</p>
+                <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="produto" data-id="2" data-nome="Calça Jeans Slim" data-preco="129.90">
+                <img src="img/calçaaa.webp" alt="Calça Jeans Slim">
+                <h3>Calça Jeans Slim</h3>
+                <p>Preço: R$ 129.90</p>
+                <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="produto" data-id="3" data-nome="Moletom Estampado" data-preco="159.90">
+                <img src="img/moleton.webp" alt="Moletom Estampado">
+                <h3>Moletom Estampado</h3>
+                <p>Preço: R$ 159.90</p>
+                <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+                <section class="produtos">
+            <div class="produto" data-id="1" data-nome="Camiseta Básica" data-preco="49.90">
+                <img src="img/co.webp" alt="Camiseta do Corinthans">
+                <h3>Camiseta do Corinthans</h3>
+                <p>Preço: R$ 149.90</p>
+                <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="produto" data-id="2" data-nome="Calça Jeans Slim" data-preco="129.90">
+                <img src="img/corta.jpg" alt="corta vento">
+                <h3>Corta-vendo NIKE</h3>
+                <p>Preço: R$ 179.90</p>
+                <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="produto" data-id="3" data-nome="Moletom Estampado" data-preco="159.90">
+                <img src="img/ber.webp" alt="bermuda">
+                <h3>Bermuda</h3>
+                <p>Preço: R$ 159.90</p>
+                <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+        <section class="carrinho">
+            <h2>🛒 Seu Carrinho</h2>
+            <ul id="lista-carrinho">
+                <li class="mensagem-vazio">Seu carrinho está vazio.</li>
+            </ul>
+            <p class="total">Total: R$ <span id="total-carrinho">0.00</span></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
