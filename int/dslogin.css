@@ -1,0 +1,148 @@
+/* dslogin.css */
+
+/* 1. Configurações Globais e Fundo Elegante */
+:root {
+    --cor-primaria: #2c3e50; /* Cinza escuro/Azul marinho (Elegante) */
+    --cor-secundaria: #c0392b; /* Bordô/Vermelho-queimado (Destaque/Sofisticação) */
+    --cor-fundo: #ecf0f1; /* Cinza claro/Quase branco */
+    --cor-texto: #34495e; /* Cinza escuro para texto */
+    --cor-placeholder: #bdc3c7; /* Cinza sutil para placeholders */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna e limpa */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--cor-fundo) 0%, #ffffff 50%, var(--cor-fundo) 100%);
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite; /* Animação sutil para o fundo */
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. Estilização do Contêiner Principal do Formulário */
+.auth {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05); /* Sombra suave e elegante */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth:hover {
+    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Título Principal */
+.auth h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 10px;
+}
+
+/* 3. Estilização das Seções de Login e Cadastro */
+#login-section, #cadastro-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os elementos */
+    align-items: center;
+}
+
+/* Subtítulos */
+#login-section h3, #cadastro-section h3 {
+    color: var(--cor-secundaria);
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+/* Campos de Input */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #dfe6e9; /* Borda leve */
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--cor-texto);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input::placeholder {
+    color: var(--cor-placeholder);
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2); /* Efeito de foco sutil */
+    outline: none;
+}
+
+/* Botões */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--cor-secundaria);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #e74c3c; /* Um vermelho mais vivo ao passar o mouse */
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Texto de Ajuda (Login/Cadastro) */
+p {
+    color: var(--cor-texto);
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+a {
+    color: var(--cor-secundaria);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--cor-primaria);
+    text-decoration: underline;
+}
+
+/* 4. Garantir que a seção de cadastro use 'flex' quando visível (configurado no JS) */
+#cadastro-section[style*="display: flex"] {
+    display: flex !important;
+}
+
+/* Ajuste para garantir que a seção de login use 'flex' quando visível */
+#login-section[style*="display: flex"] {
+    display: flex !important;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo Master</title>
+    <link rel="stylesheet" href="sty.css">
+</head>
+<body>
+    <header>
+        <h1>🛍️ Estilo Master</h1>
+        <nav>
+            <button id="btn-toggle-tema">🌙</button>
+            <div class="user-info">
+                <span id="usuario-logado"></span>
+                <button id="btn-sair" style="display:none;">Sair</button>
+                <button id="abrir-carrinho" class="carrinho-btn">
+                    🛒 Carrinho (<span id="contador-carrinho">0</span>)
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+   >
+
+        <!-- PRODUTOS -->
+        <section>
+            <h2>Produtos em Destaque</h2>
+            <div id="produtos" class="produtos"></div>
+        </section>
+
+        <!-- CARRINHO MODAL -->
+        <div id="modal-carrinho" class="modal">
+            <div class="modal-content">
+                <button id="btn-finalizar" class="finalizar-btn">Finalizar Compra</button>
+                <span id="fechar-carrinho" class="fechar">&times;</span>
+                <h2>🛒 Seu Carrinho</h2>
+                <ul id="lista-carrinho">
+                    <li class="mensagem-vazio">Seu carrinho está vazio.</li>
+                </ul>
+                <p class="total">Total: R$ <span id="total-carrinho">0.00</span></p>
+            </div>
+        </div>
+
+        <!-- MODAL DE FINALIZAÇÃO DE COMPRA -->
+<div id="modal-checkout" class="modal">
+    <div class="modal-content">
+        <span id="fechar-checkout" class="fechar">&times;</span>
+        <h2>💳 Finalizar Compra</h2>
+        <div id="resumo-pedido"></div>
+
+        <form id="form-checkout" class="checkout-form">
+            <h3>Seus Dados</h3>
+            <input type="text" id="checkout-nome" placeholder="Nome completo" required>
+            <input type="text" id="checkout-endereco" placeholder="Endereço completo" required>
+            <input type="text" id="checkout-cidade" placeholder="Cidade" required>
+            <input type="text" id="checkout-cep" placeholder="CEP" required>
+            <button type="submit" class="finalizar-btn">Finalizar Compra</button>
+        </form>
+    </div>
+</div>
+
+        <!-- PAINEL ADMIN -->
+        <section id="painel-admin" class="painel-admin" style="display:none;">
+            <h2>🧰 Painel Administrativo</h2>
+            <div class="form-admin">
+                <input type="text" id="produto-nome" placeholder="Nome do produto">
+                <input type="number" id="produto-preco" placeholder="Preço (R$)" step="0.01">
+                <input type="text" id="produto-img" placeholder="URL da imagem">
+                <button id="btn-adicionar-produto">Adicionar Produto</button>
+            </div>
+            <ul id="lista-admin-produtos"></ul>
+        </section>
+    </main>
+
+    <!-- ALERTA PERSONALIZADO -->
+    <div id="alerta" class="alerta"></div>
+
+    <script src="fun.js"></script>
+</body>
+</html>

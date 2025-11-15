@@ -1,0 +1,8 @@
+[
+    { "id": "1", "nome": "Camiseta Básica", "preco": 49.90, "img": "img/camisa basica.webp" },
+    { "id": "2", "nome": "Calça Jeans Slim", "preco": 129.90, "img": "img/calçaaa.webp" },
+    { "id": "3", "nome": "Moletom Estampado", "preco": 159.90, "img": "img/moleton.webp" },
+    { "id": "4", "nome": "Camiseta do Corinthians", "preco": 149.90, "img": "img/co.webp" },
+    { "id": "5", "nome": "Corta-vento Nike", "preco": 179.90, "img": "img/corta.jpg" },
+    { "id": "6", "nome": "Bermuda", "preco": 159.90, "img": "img/ber.webp" }
+]

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>login</title>
+
+    <link rel="stylesheet" href="dslogin.css">
+
+</head>
+
+<body>
+
+    <main>
+
+        <section id="auth" class="auth">
+
+            <h2>Área do Usuário</h2>
+
+            <div id="login-section">
+
+                <h3>Entrar</h3>
+
+                <input type="text" id="login-email" placeholder="Email">
+
+                <input type="password" id="login-senha" placeholder="Senha">
+
+                <button id="btn-login">Entrar</button>
+
+                <p>Ainda não tem conta? <a href="#" id="link-cadastro">Cadastre-se</a></p>
+
+            </div>
+
+           
+
+            <div id="cadastro-section" style="display: none;">
+
+                <h3>Criar Conta</h3>
+
+                <input type="text" id="cadastro-nome" placeholder="Nome completo">
+
+                <input type="text" id="cadastro-email" placeholder="Email">
+
+                <input type="password" id="cadastro-senha" placeholder="Senha">
+
+                <button id="btn-cadastrar">Cadastrar</button>
+
+                <p>Já tem conta? <a href="#" id="link-login">Fazer login</a></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <script>
+
+        // 1. Obter referências dos elementos
+
+        const loginSection = document.getElementById('login-section');
+
+        const cadastroSection = document.getElementById('cadastro-section');
+
+        const linkCadastro = document.getElementById('link-cadastro');
+
+        const linkLogin = document.getElementById('link-login');
+
+
+
+        // 2. Função para mostrar a seção de Cadastro e ocultar a de Login
+
+        function mostrarCadastro() {
+
+            loginSection.style.display = 'none';
+
+            cadastroSection.style.display = 'flex';
+
+        }
+
+
+
+        // 3. Função para mostrar a seção de Login e ocultar a de Cadastro
+
+        function mostrarLogin() {
+
+            cadastroSection.style.display = 'none';
+
+            loginSection.style.display = 'flex';
+
+        }
+
+
+
+        // 4. Adicionar eventos de clique aos links
+
+        linkCadastro.addEventListener('click', function(event) {
+
+            event.preventDefault();
+
+            mostrarCadastro();
+
+        });
+
+
+
+        linkLogin.addEventListener('click', function(event) {
+
+            event.preventDefault();
+
+            mostrarLogin();
+
+        });
+
+
+
+        // 5. Obter referências para os campos e botões de Ação
+
+        const inputCadastroNome = document.getElementById('cadastro-nome');
+
+        const inputCadastroEmail = document.getElementById('cadastro-email');
+
+        const inputCadastroSenha = document.getElementById('cadastro-senha');
+
+        const btnCadastrar = document.getElementById('btn-cadastrar');
+
+
+
+        const inputLoginEmail = document.getElementById('login-email');
+
+        const inputLoginSenha = document.getElementById('login-senha');
+
+        const btnLogin = document.getElementById('btn-login');
+
+
+
+        // --- Funções de Salvar e Validar ---
+
+
+
+        // 6. Função para Salvar Cadastro no localStorage
+
+        function salvarCadastro() {
+
+            const nome = inputCadastroNome.value.trim();
+
+            const email = inputCadastroEmail.value.trim();
+
+            const senha = inputCadastroSenha.value.trim();
+
+
+
+            if (nome === '' || email === '' || senha === '') {
+
+                alert('Por favor, preencha todos os campos do cadastro.');
+
+                return;
+
+            }
+
+
+
+            // Cria um objeto com os dados do usuário
+
+            const novoUsuario = {
+
+                nome: nome,
+
+                email: email,
+
+                senha: senha // Em um app real, a senha seria HASHED, NUNCA salva em texto simples!
+
+            };
+
+
+
+            // Pega a lista de usuários existente (ou cria uma nova se não houver)
+
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+
+
+            // Verifica se o email já está cadastrado
+
+            const emailExistente = usuarios.some(u => u.email === email);
+
+            if (emailExistente) {
+
+                alert('Este e-mail já está cadastrado. Tente fazer login.');
+
+                return;
+
+            }
+
+
+
+            // Adiciona o novo usuário à lista
+
+            usuarios.push(novoUsuario);
+
+
+
+            // Salva a lista atualizada no localStorage, convertendo para JSON
+
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+
+
+            alert('Cadastro realizado com sucesso! Agora você pode fazer o login.');
+
+            // Volta para a tela de login após o cadastro
+
+            mostrarLogin();
+
+           
+
+            // Limpa os campos após o cadastro
+
+            inputCadastroNome.value = '';
+
+            inputCadastroEmail.value = '';
+
+            inputCadastroSenha.value = '';
+
+        }
+
+
+
+        // 7. Função para Validar Login (AGORA COM REDIRECIONAMENTO!)
+
+        function fazerLogin() {
+
+            const emailDigitado = inputLoginEmail.value.trim();
+
+            const senhaDigitada = inputLoginSenha.value.trim();
+
+
+
+            if (emailDigitado === '' || senhaDigitada === '') {
+
+                alert('Por favor, preencha o email e a senha.');
+
+                return;
+
+            }
+
+
+
+            // Pega a lista de usuários do localStorage
+
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+
+
+            // Tenta encontrar um usuário que corresponda ao email E à senha
+
+            const usuarioEncontrado = usuarios.find(usuario =>
+
+                usuario.email === emailDigitado && usuario.senha === senhaDigitada
+
+            );
+
+
+
+            if (usuarioEncontrado) {
+
+                alert(`Login realizado com sucesso! Bem-vindo(a), ${usuarioEncontrado.nome}.`);
+
+               
+
+                // 🔑 AQUI ESTÁ O REDIRECIONAMENTO!
+
+                // Altere 'xxxxxxxxxxxxxxxxxx' pelo nome exato do seu arquivo HTML.
+
+                window.location.href = 'texto.html';
+
+               
+
+                // Limpa os campos após o login
+
+                inputLoginEmail.value = '';
+
+                inputLoginSenha.value = '';
+
+            } else {
+
+                alert('Credenciais inválidas. Verifique seu e-mail e senha.');
+
+            }
+
+        }
+
+
+
+        // 8. Adicionar eventos de clique aos botões
+
+        btnCadastrar.addEventListener('click', salvarCadastro);
+
+        btnLogin.addEventListener('click', fazerLogin);
+
+    </script>
+
+</body>
+
+</html>
